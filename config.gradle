@@ -1,0 +1,61 @@
+ext {
+    plugins = [
+            library    : 'com.android.library',
+            application: 'com.android.application',
+            maven      : 'com.github.dcendents.android-maven',
+            bintray    : 'com.jfrog.bintray'
+    ]
+
+    android = [
+            applicationId       : "com.yanzhenjie.zbar.sample",
+            compileSdkVersion   : 25,
+            buildToolsVersion   : "25.0.2",
+
+            libraryMinSdkVersion: 8,
+            sampleMinSdkVersion : 11,
+            targetSdkVersion    : 25,
+
+            versionCode         : 1,
+            versionName         : "1.0",
+    ]
+
+    maven = [
+            // library
+            version       : "1.0.0",
+
+            siteUrl       : 'https://github.com/yanzhenjie/android-zbar-sdk',
+            gitUrl        : 'git@github.com:yanzhenjie/android-zbar-sdk.git',
+
+            group         : "com.yanzhenjie.zbar",
+
+            // project
+            packaging     : 'aar',
+            name          : 'zbar',
+            description   : 'Zbar for android',
+
+            // project.license
+            licenseName   : 'The Apache Software License, Version 2.0',
+            licenseUrl    : 'http://www.apache.org/licenses/LICENSE-2.0.txt',
+
+            // project.developers
+            developerId   : 'yanzhenjie',
+            developerName : 'yanzhenjie',
+            developerEmail: 'smallajax@foxmail.com',
+
+            // bintray
+            binrayLibrary : "zbar-camera",
+            bintrayRepo   : "maven",
+            bintrayUser   : 'yolanda',
+            bintrayLicense: "Apache-2.0"
+    ]
+
+    dependencies = [
+            // sample
+            appcompat : 'com.android.support:appcompat-v7:25.3.1',
+            design    : 'com.android.support:design:25.3.1',
+
+            zbar      : 'com.yanzhenjie.zbar:zbar:1.0.0',
+            camera    : 'com.yanzhenjie.zbar:camera:1.0.0',
+            permission: 'com.yanzhenjie:permission:1.0.7'
+    ]
+}
