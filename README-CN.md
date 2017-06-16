@@ -43,6 +43,25 @@ compile 'com.yanzhenjie.zbar:zbar:1.0.0'
 </dependency>
 ```
 
+**注意**：使用远程依赖方式会加载所有平台的so文件，如果你只想依赖其中某几个平台(例如某第三方地图只提供了`armeabi`和`armeabi-v7a`的so，当app运行在x86的手机上时，就会出现加载x86平台某地图so文件失败造成app崩溃的情况)，那么你需要添加编译配置：  
+```
+defaultConfig {
+    applicationId ...
+    ...
+
+    ndk {
+        abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'mips', 'mips64', 'x86', 'x86_64'
+    }
+}
+```
+
+在`ndk{}`的`{}`中写上你需要的平台即可只加载你需要的平台的so文件，比如你只需要`armeabi`和`armeabi-v7a`：  
+```
+ndk {
+    abiFilters 'armeabi', 'armeabi-v7a'
+}
+```
+
 Zbar核心识别条码/二维码的代码如下：
 ```java
 byte[] imageData = ...;

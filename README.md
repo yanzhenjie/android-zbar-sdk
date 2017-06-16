@@ -40,6 +40,25 @@ compile 'com.yanzhenjie.zbar:zbar:1.0.0'
 </dependency>
 ```
 
+**Note**: The use of remote dependencies will load all the files so the platform, if you just want to rely on some of these platforms, then you need to add the compilation configuration:    
+```
+defaultConfig {
+    applicationId ...
+    ...
+
+    ndk {
+        abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'mips', 'mips64', 'x86', 'x86_64'
+    }
+}
+```
+
+For example, you only need `armeabi` and` armeabi-v7a`:  
+```
+ndk {
+    abiFilters 'armeabi', 'armeabi-v7a'
+}
+```
+
 Zbar's core recognition barcode/QRCode code is as follows.
 ```java
 byte[] imageData = ...;
