@@ -30,6 +30,7 @@ public final class CameraManager {
     private final CameraConfiguration mConfiguration;
 
     private Camera mCamera;
+    private boolean isFlashLightOn=false;
 
     public CameraManager(Context context) {
         this.mConfiguration = new CameraConfiguration(context);
@@ -142,5 +143,21 @@ public final class CameraManager {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+    }
+
+    /**
+     *  open or close FlashLight
+     */
+    public void switchLight() {
+        if (mCamera != null) {
+            Camera.Parameters parameter = mCamera.getParameters();
+            parameter.setFlashMode(isFlashLightOn ? Camera.Parameters.FLASH_MODE_OFF : Camera.Parameters.FLASH_MODE_TORCH);
+            try {
+                mCamera.setParameters(parameter);
+                isFlashLightOn = !isFlashLightOn;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

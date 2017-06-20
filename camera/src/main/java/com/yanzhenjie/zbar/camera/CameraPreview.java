@@ -58,6 +58,12 @@ public class CameraPreview extends FrameLayout implements SurfaceHolder.Callback
     }
 
     /**
+     * open or close FlashLight
+     */
+    public  void switchLight() {
+        mCameraManager.switchLight();
+    }
+    /**
      * Camera start preview.
      */
     public boolean start() {
